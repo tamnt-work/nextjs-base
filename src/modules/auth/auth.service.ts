@@ -1,4 +1,4 @@
-import { ApiResonse } from '@/lib/api';
+import { ApiResponse } from '@/lib/api';
 import { IServerResponse } from '@/lib/core/IServerResponse';
 import { appApi } from '@/utils/appApi';
 import { LoginDto } from './dto/login.dto';
@@ -11,7 +11,7 @@ const AuthService = {
    * @param payload
    * @returns
    */
-  login(payload: LoginDto): Promise<ApiResonse<IServerResponse>> {
+  login(payload: LoginDto): Promise<ApiResponse<IServerResponse>> {
     return appApi.post<IServerResponse>(`${prefix}/login`, {
       body: payload,
     });
@@ -21,7 +21,7 @@ const AuthService = {
    * Logout from the application
    * @returns
    */
-  logout(): Promise<ApiResonse> {
+  logout(): Promise<ApiResponse> {
     return appApi.post(`${prefix}/logout`);
   },
 };

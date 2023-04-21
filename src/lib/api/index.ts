@@ -7,7 +7,7 @@ interface ApiOptions {
   method?: HttpMethod;
 }
 
-export interface ApiResonse<T = any> {
+export interface ApiResponse<T = any> {
   data: T;
   status: number;
   statusText: string;
@@ -72,7 +72,7 @@ class API {
    * @param options
    * @returns
    */
-  get<T = any>(path: string, options?: ApiOptions): Promise<ApiResonse<T>> {
+  get<T = any>(path: string, options?: ApiOptions): Promise<ApiResponse<T>> {
     return this.fetchApi<T>(path, { ...options, method: HttpMethod.Get });
   }
 
@@ -82,7 +82,7 @@ class API {
    * @param options
    * @returns
    */
-  post<T = any>(path: string, options?: ApiOptions): Promise<ApiResonse<T>> {
+  post<T = any>(path: string, options?: ApiOptions): Promise<ApiResponse<T>> {
     return this.fetchApi<T>(path, { ...options, method: HttpMethod.Post });
   }
 
@@ -92,7 +92,7 @@ class API {
    * @param options
    * @returns
    */
-  put<T = any>(path: string, options?: ApiOptions): Promise<ApiResonse<T>> {
+  put<T = any>(path: string, options?: ApiOptions): Promise<ApiResponse<T>> {
     return this.fetchApi<T>(path, { ...options, method: HttpMethod.Put });
   }
 
@@ -102,7 +102,7 @@ class API {
    * @param options
    * @returns
    */
-  patch<T = any>(path: string, options?: ApiOptions): Promise<ApiResonse<T>> {
+  patch<T = any>(path: string, options?: ApiOptions): Promise<ApiResponse<T>> {
     return this.fetchApi<T>(path, { ...options, method: HttpMethod.Patch });
   }
 
@@ -112,7 +112,7 @@ class API {
    * @param options
    * @returns
    */
-  delete<T = any>(path: string, options?: ApiOptions): Promise<ApiResonse<T>> {
+  delete<T = any>(path: string, options?: ApiOptions): Promise<ApiResponse<T>> {
     return this.fetchApi<T>(path, { ...options, method: HttpMethod.Delete });
   }
 }
