@@ -1,0 +1,5 @@
+{
+  "**/*.+(js|ts|tsx|vue)": ["yarn lint:js"],
+  "**/*.+(css|scss|sass)": ["yarn lint:css"],
+  "*": ["yarn prettier"]
+}

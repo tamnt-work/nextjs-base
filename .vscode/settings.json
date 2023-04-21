@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true,
+    "source.fixAll": true
+  },
+  "i18n-ally.sourceLanguage": "ja",
+  "i18n-ally.enabledFrameworks": ["react", "i18next"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.defaultNamespace": "common",
+  "i18n-ally.autoDetection": true,
+  "i18n-ally.namespace": true,
+  "css.lint.unknownAtRules": "ignore",
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"],
+  "scss.lint.unknownAtRules": "ignore",
+  "scssFormatter.singleQuote": false,
+  "scssFormatter.printWidth": 120
+}
