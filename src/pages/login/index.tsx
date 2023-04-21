@@ -26,7 +26,7 @@ const LoginPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <SEO title={t('auth:loginPage.title').toString()} />
+      <SEO title={t('auth:title').toString()} />
       <button onClick={() => onLogin()}>{t('common:actions.login')}</button>
     </>
   );
