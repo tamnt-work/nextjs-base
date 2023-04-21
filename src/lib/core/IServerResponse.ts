@@ -1,3 +1,5 @@
-export interface IServerResponse<T = Array<Record<string, unknown>> | Record<string, unknown>> {
-  data: T;
+export interface IServerResponse<T = any> {
+  data?: T;
+  meta?: Record<string, unknown>;
+  status: number;
 }

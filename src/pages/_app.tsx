@@ -1,3 +1,4 @@
+import DefaultLayout from '@/layouts/DefaultLayout';
 import '@/styles/globals.css';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
@@ -14,7 +15,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
     <RecoilRoot>

@@ -1,6 +1,5 @@
 import SEO from '@/components/SEO';
 import { ROUTE_PAGE } from '@/constants/route-page';
-import DefaultLayout from '@/layouts/DefaultLayout';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from './_app';
@@ -36,7 +35,5 @@ export const getServerSideProps: GetServerSideProps = withAuth(async () => {
     props: {},
   };
 });
-
-HomePage.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>;
 
 export default HomePage;

@@ -1,15 +1,18 @@
+import { HttpMethod } from '@/enums/http-method';
 import { withApiSession } from '@/lib/session';
+import { withMethod } from '@/middleware/api/method';
+import { ApiResponse } from '@/utils/api/response';
 import { NextApiResponse } from 'next';
-import StatusCode from 'status-code-enum';
 
 type Data = {
   done: boolean;
 };
 
-export default withApiSession(async function handler(req, res: NextApiResponse<Data>) {
-  if (req.method !== 'POST') return res.status(StatusCode.ClientErrorMethodNotAllowed).end();
+export default withMethod(
+  withApiSession(async function handler(req, res: NextApiResponse<Data>) {
+    await req.session.destroy();
 
-  await req.session.destroy();
-
-  res.status(StatusCode.SuccessOK).json({ done: true });
-});
+    return ApiResponse(res).ok();
+  }),
+  HttpMethod.Post,
+);
