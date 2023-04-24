@@ -1,5 +1,6 @@
 import { ApiServer } from '@/enums/api-server';
 import { HttpMethod } from '@/enums/http-method';
+import { toCamelCase } from '@/utils/helper';
 
 interface ApiOptions {
   headers?: Record<string, string>;
@@ -60,7 +61,7 @@ class API {
     const data = await response.json();
 
     return {
-      data,
+      data: toCamelCase(data),
       status: response.status,
       statusText: response.statusText,
     };

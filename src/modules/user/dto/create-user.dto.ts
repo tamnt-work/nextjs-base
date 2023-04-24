@@ -11,8 +11,6 @@ export class CreateUserDto implements IForm {
   }
 
   toForm() {
-    return {
-      ...this,
-    };
+    return this;
   }
 }

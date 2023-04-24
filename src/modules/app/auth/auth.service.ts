@@ -1,20 +1,20 @@
 import { ApiResponse } from '@/lib/api';
 import { IServerResponse } from '@/lib/core/IServerResponse';
 import { appApi } from '@/utils/appApi';
-import AppAuthService from '../app/auth/auth.service';
-import { AppLoginDto } from '../app/auth/dto/login.dto';
-import { LoginDto } from './dto/login.dto';
+import { AppLoginDto } from './dto/login.dto';
 
 const prefix = '/auth';
 
-const AuthService = {
+const AppAuthService = {
   /**
    * Login to the application
-   * @param loginDto
+   * @param payload
    * @returns
    */
-  login(_loginDto: LoginDto): Promise<ApiResponse<IServerResponse>> {
-    return AppAuthService.login(new AppLoginDto());
+  login(payload: AppLoginDto): Promise<ApiResponse<IServerResponse>> {
+    return appApi.post<IServerResponse>(`${prefix}/login`, {
+      body: payload,
+    });
   },
 
   /**
@@ -26,4 +26,4 @@ const AuthService = {
   },
 };
 
-export default AuthService;
+export default AppAuthService;

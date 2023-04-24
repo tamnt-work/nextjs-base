@@ -13,8 +13,6 @@ export class UserEntity implements IEntity<UserModel> {
   }
 
   toModel(): UserModel {
-    return new UserModel({
-      ...this,
-    });
+    return new UserModel(this);
   }
 }
