@@ -1,5 +1,7 @@
 import '@/assets/styles/globals.scss';
+import SEO from '@/components/SEO';
 import DefaultLayout from '@/layouts/DefaultLayout';
+import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { FC, ReactElement, ReactNode } from 'react';
@@ -8,6 +10,10 @@ import RecoilNexus from 'recoil-nexus';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
+  metadata: {
+    title: string;
+    description?: string;
+  };
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -18,10 +24,13 @@ const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
-    <RecoilRoot>
-      <RecoilNexus />
-      {getLayout(<Component {...pageProps} />)}
-    </RecoilRoot>
+    <StyleProvider transformers={[legacyLogicalPropertiesTransformer]} ssrInline>
+      <SEO title={Component.metadata.title} />
+      <RecoilRoot>
+        <RecoilNexus />
+        {getLayout(<Component {...pageProps} />)}
+      </RecoilRoot>
+    </StyleProvider>
   );
 };
 

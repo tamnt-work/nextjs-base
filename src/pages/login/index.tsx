@@ -1,10 +1,10 @@
 import '@/assets/styles/pages/login/index.module.scss';
-import SEO from '@/components/SEO';
 import { ROUTE_PAGE } from '@/constants/route-page';
 import BlankLayout from '@/layouts/BlankLayout';
 import { withGuest } from '@/middleware/guest';
 import AuthService from '@/modules/auth/auth.service';
 import { LoginDto } from '@/modules/auth/dto/login.dto';
+import { Button } from 'antd';
 import { GetServerSideProps } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
@@ -28,13 +28,18 @@ const LoginPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <SEO title={t('auth:title').toString()} />
-      <button onClick={() => onLogin()}>{t('common:actions.login')}</button>
+      <Button type="primary" onClick={() => onLogin()}>
+        {t('common:actions.login')}
+      </Button>
     </>
   );
 };
 
 LoginPage.getLayout = (page) => <BlankLayout>{page}</BlankLayout>;
+
+LoginPage.metadata = {
+  title: 'Login',
+};
 
 export const getServerSideProps: GetServerSideProps = withGuest(async () => {
   return {
