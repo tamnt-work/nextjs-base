@@ -7,6 +7,7 @@ import { withAuth } from '@/middleware/auth';
 import AuthService from '@/modules/auth/auth.service';
 import { Button } from 'antd';
 import { GetServerSideProps } from 'next';
+import getT from 'next-translate/getT';
 
 const HomePage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -29,13 +30,12 @@ const HomePage: NextPageWithLayout = () => {
   );
 };
 
-HomePage.metadata = {
-  title: 'Home',
-};
-
-export const getServerSideProps: GetServerSideProps = withAuth(async () => {
+export const getServerSideProps: GetServerSideProps = withAuth(async ({ locale }) => {
+  const t = await getT(locale, 'home');
   return {
-    props: {},
+    props: {
+      title: t('home:title'),
+    },
   };
 });
 

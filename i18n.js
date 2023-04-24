@@ -4,7 +4,7 @@ module.exports = {
   pages: {
     '*': ['common'],
     '/': ['home'],
-    '/login': ['auth'],
+    '/login': ['login'],
   },
   loadLocaleFrom: (lang, ns) =>
     // You can use a dynamic import, fetch, whatever. You should

@@ -10,10 +10,6 @@ import RecoilNexus from 'recoil-nexus';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
-  metadata: {
-    title: string;
-    description?: string;
-  };
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -25,7 +21,7 @@ const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
 
   return (
     <StyleProvider transformers={[legacyLogicalPropertiesTransformer]} ssrInline>
-      <SEO title={Component.metadata.title} />
+      <SEO title={pageProps.title} />
       <RecoilRoot>
         <RecoilNexus />
         {getLayout(<Component {...pageProps} />)}

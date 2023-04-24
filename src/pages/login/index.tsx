@@ -6,6 +6,7 @@ import AuthService from '@/modules/auth/auth.service';
 import { LoginDto } from '@/modules/auth/dto/login.dto';
 import { Button } from 'antd';
 import { GetServerSideProps } from 'next';
+import getT from 'next-translate/getT';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -37,13 +38,12 @@ const LoginPage: NextPageWithLayout = () => {
 
 LoginPage.getLayout = (page) => <BlankLayout>{page}</BlankLayout>;
 
-LoginPage.metadata = {
-  title: 'Login',
-};
-
-export const getServerSideProps: GetServerSideProps = withGuest(async () => {
+export const getServerSideProps: GetServerSideProps = withGuest(async ({ locale }) => {
+  const t = await getT(locale, 'login');
   return {
-    props: {},
+    props: {
+      title: t('login:title'),
+    },
   };
 });
 
