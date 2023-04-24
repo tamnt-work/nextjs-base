@@ -1,5 +1,5 @@
+import '@/assets/styles/globals.scss';
 import DefaultLayout from '@/layouts/DefaultLayout';
-import '@/styles/globals.css';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { FC, ReactElement, ReactNode } from 'react';
