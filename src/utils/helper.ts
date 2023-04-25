@@ -30,3 +30,22 @@ export const toSnakeCase: any = (obj: any) => {
     return obj.map((el) => toSnakeCase(el));
   }
 };
+
+/**
+ * Convert plain object to instance
+ * @param ctor
+ * @param plain
+ * @returns
+ */
+export const plainToInstance = <T>(ctor: new () => T, plain: any): T => {
+  const instance = new ctor() as any;
+  const keys = Object.keys(instance as Record<string, unknown>);
+
+  for (const key of keys) {
+    if (plain.hasOwnProperty(key)) {
+      instance[key] = plain[key];
+    }
+  }
+
+  return instance;
+};

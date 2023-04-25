@@ -1,5 +1,5 @@
 import { beApi } from '@/utils/beApi';
-import { plainToInstance } from 'class-transformer';
+import { plainToInstance } from '@/utils/helper';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './user.entity';
