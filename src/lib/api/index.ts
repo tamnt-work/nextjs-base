@@ -39,7 +39,7 @@ class API {
    * @param options
    * @returns
    */
-  private async fetchApi<T>(path: string, options: ApiOptions = {}) {
+  private async fetchApi<T>(path: string, options: ApiOptions = {}): Promise<ApiResponse<T>> {
     const url = `${this.API_BASE_URL}${path}`;
     const headers = {
       'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ class API {
       throw error;
     }
 
-    const data = await response.json();
+    const data: T = await response.json();
 
     return {
       data: toCamelCase(data),

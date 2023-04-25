@@ -1,4 +1,5 @@
 import { beApi } from '@/utils/beApi';
+import { plainToInstance } from 'class-transformer';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './user.entity';
@@ -14,7 +15,7 @@ const UserService = {
   async all(): Promise<Array<UserModel>> {
     const { data } = await beApi.get<UserEntity[]>(prefix);
 
-    return data.map((user) => user.toModel());
+    return data.map((user) => plainToInstance(UserEntity, user).toModel());
   },
 
   /**
@@ -25,7 +26,7 @@ const UserService = {
   async findOne(id: string): Promise<UserModel> {
     const { data } = await beApi.get<UserEntity>(`${prefix}/${id}`);
 
-    return data.toModel();
+    return plainToInstance(UserEntity, data).toModel();
   },
 
   /**
@@ -46,7 +47,7 @@ const UserService = {
       body: user.toForm(),
     });
 
-    return data.toModel();
+    return plainToInstance(UserEntity, data).toModel();
   },
 
   /**
