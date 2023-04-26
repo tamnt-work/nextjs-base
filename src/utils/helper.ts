@@ -6,13 +6,13 @@ import snakeCase from 'lodash/snakeCase';
  * @param obj
  * @returns
  */
-export const toCamelCase: any = (obj: any) => {
+export const toCamelCase = <T = any>(obj: any): T => {
   if (!obj || typeof obj !== 'object') return obj;
 
   if (!Array.isArray(obj)) {
-    return Object.fromEntries(Object.entries(obj).map(([key, val]) => [camelCase(key), toCamelCase(val)]));
+    return Object.fromEntries(Object.entries(obj).map(([key, val]) => [camelCase(key), toCamelCase(val)])) as T;
   } else {
-    return obj.map((el) => toCamelCase(el));
+    return obj.map((el) => toCamelCase(el)) as T;
   }
 };
 
@@ -21,13 +21,13 @@ export const toCamelCase: any = (obj: any) => {
  * @param obj
  * @returns
  */
-export const toSnakeCase: any = (obj: any) => {
+export const toSnakeCase = <T = any>(obj: any): T => {
   if (!obj || typeof obj !== 'object') return obj;
 
   if (!Array.isArray(obj)) {
-    return Object.fromEntries(Object.entries(obj).map(([key, val]) => [snakeCase(key), toSnakeCase(val)]));
+    return Object.fromEntries(Object.entries(obj).map(([key, val]) => [snakeCase(key), toSnakeCase(val)])) as T;
   } else {
-    return obj.map((el) => toSnakeCase(el));
+    return obj.map((el) => toSnakeCase(el)) as T;
   }
 };
 

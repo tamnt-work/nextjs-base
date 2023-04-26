@@ -61,7 +61,7 @@ class API {
     const data: T = await response.json();
 
     return {
-      data: toCamelCase(data),
+      data: toCamelCase<T>(data),
       status: response.status,
       statusText: response.statusText,
     };
