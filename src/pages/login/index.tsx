@@ -1,4 +1,4 @@
-import '@/assets/styles/pages/login/index.module.scss';
+import styles from '@/assets/styles/pages/login/index.module.scss';
 import { ROUTE_PAGE } from '@/constants/route-page';
 import BlankLayout from '@/layouts/BlankLayout';
 import { withGuest } from '@/middleware/guest';
@@ -29,7 +29,7 @@ const LoginPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => onLogin()}>
+      <Button type="primary" size="large" onClick={() => onLogin()} className={styles.login__button}>
         {t('common:actions.login')}
       </Button>
     </>

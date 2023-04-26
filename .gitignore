@@ -35,3 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 .history
+src/assets/styles/vendors/**/*.min.css

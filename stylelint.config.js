@@ -10,6 +10,12 @@ module.exports = {
         ignoreAtRules: ['tailwind'],
       },
     ],
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global'],
+      },
+    ],
     'plugin/selector-bem-pattern': {
       preset: 'bem',
     },

@@ -1,7 +1,8 @@
 import '@/assets/styles/globals.scss';
+import '@/assets/styles/vendors/antd.min.css';
 import SEO from '@/components/SEO';
 import DefaultLayout from '@/layouts/DefaultLayout';
-import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs';
+import { StyleProvider } from '@ant-design/cssinjs';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { FC, ReactElement, ReactNode } from 'react';
@@ -20,7 +21,7 @@ const App: FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
-    <StyleProvider transformers={[legacyLogicalPropertiesTransformer]} ssrInline>
+    <StyleProvider hashPriority="low">
       <SEO title={pageProps.title} />
       <RecoilRoot>
         <RecoilNexus />
