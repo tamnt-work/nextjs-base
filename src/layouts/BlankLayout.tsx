@@ -7,7 +7,6 @@ interface Props {
 const BlankLayout: FC<Props> = ({ children }) => {
   return (
     <div>
-      <div>Blank Layout</div>
       <div className="content">{children}</div>
     </div>
   );

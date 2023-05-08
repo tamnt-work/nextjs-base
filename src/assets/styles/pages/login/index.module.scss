@@ -1,5 +1,15 @@
-.login {
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &__button:global(.ant-btn) {
     // style custom
+  }
+
+  &__form {
+    max-width: 400px;
+    width: 100%;
   }
 }
